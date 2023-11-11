@@ -1,0 +1,20 @@
+<button class="btn btn-danger"><a routerLink="/admin/categories/add" class="btn1">Thêm Mới</a></button>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Category Name</th>
+      <th scope="col">Chức năng</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let category of categories; index as i">
+      <td scope="row">{{i+1}}</td>
+      <td>{{category.name}}</td>
+      <td>
+        <button class="btn btn-danger " (click)="removeItem(category._id)!">Xóa</button>
+        <button class="btn btn-primary m-2 " routerLink="/admin/categories/{{category._id}}/update">Sửa</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

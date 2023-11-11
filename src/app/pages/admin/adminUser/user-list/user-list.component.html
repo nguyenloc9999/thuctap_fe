@@ -1,0 +1,28 @@
+<table class="table table-striped">
+
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Avatar</th>
+        <th scope="col">Địa Chỉ</th>
+        <th scope="col">Role</th>
+        <th scope="col">Chức năng</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let users1 of users;index as i">
+        <td scope="row">{{i + 1}}</td>
+        <td>{{users1.name}}</td>
+        <td>{{users1.email}}</td>
+        <td><img src="{{users1.image?.url}}" width="50"></td>
+        <td>{{users1.address}}</td>
+        <td>{{users1.role}}</td>
+        <td>
+          <button class="btn btn-danger" (click)="removeItem(users1._id)!">Xóa</button>
+          <button class="btn btn-primary m-2 " routerLink="/admin/user/{{users1._id}}/update">Sửa</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>

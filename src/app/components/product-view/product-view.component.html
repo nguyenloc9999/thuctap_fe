@@ -1,0 +1,78 @@
+<section id="featured-books">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="product-list" data-aos="fade-up">
+                    <div class="row">
+
+                        <div class="col-md-3" *ngFor="let product of products">
+                            <figure class="product-style">
+                                <img [src]="product.image?.url" alt="Books" class="product-item">
+                                <button type="button" class="add-to-cart"
+                                    routerLink="/product/{{product._id}}">Detail</button>
+                                <figcaption>
+                                    <h3><a routerLink="/product/{{product._id}}">{{product.name}}</a></h3>
+                                    <p class="name">{{product.author}}</p>
+                                    <div class="item-price">{{product.price}}đ</div>
+                                </figcaption>
+                            </figure>
+                        </div>
+
+                    </div>
+                    <div class="paginate">
+                        <mat-paginator [length]="formattedPagination.length" [pageSize]="formattedPagination.pageSize"
+                            [pageSizeOptions]="formattedPagination.pageSizeOptions"
+                            [pageIndex]=" formattedPagination.pageIndex" (page)="onPageChange($event)">
+                        </mat-paginator>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+<!--  -->
+<section id="best-selling" class="leaf-pattern-overlay">
+    <div class="corner-pattern-overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="row">
+                    <div class="col-md-6">
+                        <figure class="products-thumb">
+                            <img src="https://res.cloudinary.com/dkvghcobl/image/upload/v1686364077/nabalm7p9hlzkdzvxxvd.png"
+                                alt="book" class="single-image">
+                        </figure>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="product-entry">
+                            <h2 class="section-title divider">Featured book</h2>
+                            <div class="products-content">
+                                <div class="author-name">By Timbur Hood</div>
+                                <h3 class="item-title">Birds gonna be happy</h3>
+                                <p class="des">Lorem ipsum dolor sit amet, consectetur
+                                    adipiscing elit. Sed eu feugiat
+                                    amet, libero
+                                    ipsum enim pharetra hac.</p>
+                                <div class="item-price">45.00đ</div>
+                                <div class="btn-wrap">
+                                    <a href="#" class="btn-accent-arrow view">View More <i
+                                            class="icon icon-ns-arrow-right"></i></a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+               
+
+            </div>
+
+        </div>
+    </div>
+</section>

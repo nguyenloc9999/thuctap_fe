@@ -1,0 +1,26 @@
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Tên Sách</th>
+        <th scope="col">Người Đăng</th>
+        <th scope="col">Nội Dung</th>
+        <th scope="col">Thời Gian Đăng</th>
+        <th scope="col">Chức Năng</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let comment of comments; index as i">
+        <td scope="row">{{i+1}}</td>
+        <td>{{comment?.productId?.name}}</td>
+        <td>{{comment?.userId?.name}}</td>
+  
+          <td>{{comment.description}}</td>
+          <td>{{comment.createdAt}}</td>
+        <td>
+          <button class="btn btn-danger " (click)="onHandleRemove(comment._id)">Xóa</button>
+        </td>
+      </tr>
+  
+    </tbody>
+  </table>

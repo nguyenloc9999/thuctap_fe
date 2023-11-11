@@ -1,0 +1,71 @@
+.tab-content {
+    position: relative;
+}
+
+[data-tab-content] {
+    opacity: 0;
+    visibility: hidden;
+    height: 0;
+    overflow: hidden;
+}
+
+.active[data-tab-content] {
+    opacity: 1;
+    visibility: visible;
+    height: auto;
+}
+
+.tabs {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 55px 0;
+    justify-content: center;
+    list-style: none;
+}
+
+.tabs .tab {
+    font-weight: 600;
+    color: #999;
+    margin-right: 50px;
+    cursor: pointer;
+}
+
+.tabs .active {
+    font-weight: 600;
+    color: #999;
+    margin-right: 50px;
+    cursor: pointer;
+}
+
+.tabs .tab.active,
+.tabs .tab:hover {
+    color: #111;
+}
+
+img.books-image {
+    margin-right: 10px;
+    margin-bottom: 20px;
+    object-fit: cover;
+}
+
+.title {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 17px;
+    letter-spacing: 0.1em;
+    margin-top: 4%;
+    color: #ED553B;
+}
+
+.section-title {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 44px;
+    color: #393280;
+}
+
+

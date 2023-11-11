@@ -1,0 +1,48 @@
+<form (ngSubmit)="onHandleAdd()" [formGroup]="blogForm">
+    <!-- Name book input -->
+    <div class="form-outline mb-4">
+      <label class="form-label" for="form4Example1">Tác giả</label>
+      <input type="text" formControlName="author" class="form-control" />
+      <div *ngIf="blogForm.controls.author?.errors?.['required'] && blogForm.controls.author?.touched  || submitted"
+        class="text-danger">
+        Tên tác giả là bắt buộc
+      </div>
+      <div *ngIf="blogForm.controls.author?.errors?.['minlength'] && blogForm.controls.author?.touched"
+        class="text-danger">
+        Tên tác giả có ít nhất 4 ký tự
+      </div>
+      </div>
+      <div class="form-outline mb-4">
+        <label class="form-label" for="form4Example1">Tiêu đề</label>
+      <input type="text" formControlName="title" class="form-control" />
+      <div *ngIf="blogForm.controls.title?.errors?.['required'] && blogForm.controls.title?.touched  || submitted" class="text-danger">
+        Tiêu đề là bắt buộc
+      </div>
+      <div *ngIf="blogForm.controls.title?.errors?.['minlength'] && blogForm.controls.title?.touched" class="text-danger">
+        Tiêu đề có ít nhất 6 ký tự
+      </div>
+    </div>
+    
+      <div class="form-outline mb-4">
+          <label class="form-label" for="form4Example1">Mô tả</label>
+        <input type="text" formControlName="description" class="form-control" />
+        <div *ngIf="blogForm.controls.description?.errors?.['required'] && blogForm.controls.description?.touched  || submitted" class="text-danger">
+          Mô tả là bắt buộc
+        </div>
+        <div *ngIf="blogForm.controls.description?.errors?.['minlength'] && blogForm.controls.description?.touched" class="text-danger">
+          Mô tả có ít nhất 4 ký tự
+        </div>
+    </div>
+    <div class="form-outline mb-4">
+      <label class="form-label">Ảnh</label>
+      <input type="file" class="form-control" name="images" (change)="onSelectImage($event)" />
+      <!-- Hiển thị thông báo lỗi cho trường "Ảnh" -->
+      <div *ngIf="blogForm.get('image')?.errors?.['required'] && (blogForm.get('image')?.touched || submitted)"
+        class="text-danger">
+        Ảnh là bắt buộc
+      </div>
+    </div>
+  
+    <!-- Submit button -->
+    <button type="submit" class="btn btn-danger btn-block mb-4">Submit</button>
+  </form>

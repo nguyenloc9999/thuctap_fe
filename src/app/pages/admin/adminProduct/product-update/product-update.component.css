@@ -1,0 +1,10 @@
+.image-preview {
+    margin-top: 10px;
+    /* Khoảng cách với input ảnh */
+    margin-bottom: 10px;
+}
+
+.image-preview img {
+    width: 50px;
+    /* Độ rộng tối đa của hình ảnh */
+}

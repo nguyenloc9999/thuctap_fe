@@ -1,0 +1,60 @@
+<section class="hero-section jarallax">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="page-title">Our Blog</h1>
+                <div class="breadcrumbs">
+                    <span class="item"><a class="a" routerLink="">Home /</a></span>
+                    <span class="item">Our Blog</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+<br>
+<section id="latest-blog" class="scrollspy-section padding-large">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-12">
+
+                <!-- post grid -->
+                <div class="post-grid">
+                    <div class="row">
+
+                        <div class="col-md-4" *ngFor="let blog of blogs">
+
+                            <article class="post-item">
+
+                                <figure>
+                                    <a href="#" class="image-hvr-effect">
+                                        <img [src]="blog.image.url" alt="post" class="post-image">
+                                    </a>
+                                </figure>
+
+                                <div class="post-content">
+                                    <div class="meta-date">{{blog.author}}</div>
+                                    <h3 class="post-title"><a href="#">{{blog.title}}</a>
+                                    </h3>
+                                    <p>{{blog.description}}</p>
+                                </div>
+                            </article>
+
+                        </div>
+
+
+                    </div>
+                </div>
+                <!-- / post grid -->
+
+            </div>
+
+        </div>
+
+
+
+
+    </div>
+</section>

@@ -1,0 +1,133 @@
+#quotation .section-title.divider,
+#quotation .section-title.divider:after {
+    margin: 0 auto;
+}
+
+#quotation blockquote {
+    width: 40%;
+    margin: 0 auto;
+    margin-bottom: 100px;
+}
+
+#quotation q {
+    display: block;
+    font-size: 1.6em;
+    padding: 40px 0;
+}
+
+#quotation .author-name {
+    font-family: "Prata", Georgia, serif;
+    font-size: 1.4em;
+}
+
+@media screen and (max-width: 768px) {
+    #quotation blockquote {
+        width: 80%;
+    }
+}
+
+#latest-blog {
+    margin-bottom: 180px;
+}
+
+#latest-blog article.column {
+    margin-bottom: 60px;
+}
+
+#latest-blog figure {
+    margin-bottom: 30px;
+}
+
+#latest-blog .meta-date {
+    font-family: "Prata", Georgia, serif;
+    color: #74642F;
+    padding-bottom: 20px;
+}
+
+#latest-blog h3 a {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 23px;
+    line-height: 166%;
+    text-decoration: none;
+    text-transform: capitalize;
+    color: #173F5F;
+}
+
+#latest-blog .links-element {
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid #C8C8C8;
+    padding-top: 20px;
+}
+
+#latest-blog .categories {
+    text-transform: uppercase;
+}
+
+.social-links li {
+    padding-right: 20px;
+}
+
+@media screen and (max-width: 999px) {
+    #latest-blog h3 {
+        font-size: 1.4em;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    #latest-blog .grid {
+        flex-wrap: wrap;
+    }
+
+    #latest-blog article.column {
+        width: 100%;
+    }
+}
+
+.image-hvr-effect {
+    display: flex;
+    overflow: hidden;
+}
+
+.image-hvr-effect img.post-image {
+    transform: scale(1);
+    will-change: transform;
+    transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    z-index: 0;
+    width: 418.88px;
+    height: 314px;
+}
+
+.image-hvr-effect:hover img.post-image {
+    transform: scale(1.1);
+}
+
+.title {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 16px;
+    /* identical to box height */
+
+    text-align: center;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+
+    color: #7A7A7A;
+}
+
+.section-title {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 48px;
+    line-height: 58px;
+    text-align: center;
+    text-transform: capitalize;
+    margin-top: 1%;
+    color: #393280;
+    margin-bottom: 3%;
+}

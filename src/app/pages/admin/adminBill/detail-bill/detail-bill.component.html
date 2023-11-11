@@ -1,0 +1,63 @@
+<div class="box-detail-order">
+    <p class="title">Thông tin đơn hàng</p>
+    <div class="sub-detail-order">
+        <div class="info-clident">
+            <form>
+                <div *ngIf="bills">
+                    <label class="name-clident">Họ và tên : <span>{{ bills.name }}</span></label>
+                  </div>
+                  <div *ngIf="bills">
+                <label class="phone">Số điện thoại : <span> {{bills.phone}}
+                    </span></label>
+                </div>
+                <div *ngIf="bills">
+                <label class="address">Địa chỉ : <span> {{bills.address}}
+                    </span></label>
+                </div>
+                <div *ngIf="bills">
+                <label class="address">Ngày đặt hàng: <span> {{bills.createdAt}}
+                    </span></label>
+                </div>
+                    <div class="col-12" *ngIf="bills">
+                        <form (ngSubmit)="onHandleSubmit()" [formGroup]="orderForm">
+                          <div class="">
+                       
+                            <div class="p-fluid p-formgrid grid">
+                              <div class="field col-12 md:col-12">
+                                <label htmlFor="status" *ngIf="bills">Trạng thái: <span>{{ bills.status?.status }}</span></label>
+                                <td style="width:20%; min-width:15rem;">
+                                    <select class="form-select" aria-label=".form-select-lg example" formControlName="status" [(ngModel)]="orderForm.value.status">
+                                        <option *ngFor="let item of statusList" [value]="item._id">
+                                            {{ item.status }}
+                                        </option>
+                                    </select>
+                                </td>
+                              </div>
+                              <div class="field col-12 md:col-1">
+                                <p class="total-price">Tổng đơn hàng : <span> {{bills.total}}đ
+
+                                </span></p>
+                            <button type="submit" value="Đang giao hàng">Xác nhận </button>
+                              </div>
+                            </div>
+                          </div>
+                          
+                        </form>
+                      </div>
+                      
+              
+            </form>
+        </div>
+        <div class="list-product-order" >
+            <div class="item-order-product" *ngFor="let bill of billproduct">
+                <div class="item-left">
+                    <img src="{{bill.image}}" class="img">
+                </div>
+                <div class="item-right">
+                    <p class="name-product-order">Sản phẩm : <span>{{bill.name}}</span></p>
+                    <p class="quantity-porduct-order">Số Lượng : <span>{{bill.quantity}}</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,31 @@
+<div #notification class="notification"></div>
+<button class="btn btn-danger"> <a routerLink="/admin/blogs/add" class="btn1">Thêm Mới</a></button>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Author</th>
+      <th scope="col">Title</th>
+      <th scope="col">Description</th>
+      <th scope="col">Image</th>
+      <th scope="col">CreateAt</th>
+      <th scope="col">UpdateAt</th>
+      <th scope="col">Chức năng</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let blog of blogs; index as i">
+      <td scope="row">{{i+1}}</td>
+      <td>{{blog.author}}</td>
+      <td>{{blog.title}}</td>
+      <td>{{blog.description}}</td>
+      <td><img src="{{blog.image.url}}" width="70"></td>
+      <td>{{blog.createdAt}}</td>
+      <td>{{blog.updatedAt}}</td>
+      <td>
+        <button class="btn btn-danger " (click)="removeItem(blog._id)!">Xóa</button>
+        <button class="btn btn-primary m-2 " routerLink="/admin/blogs/{{blog._id}}/update">Sửa</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

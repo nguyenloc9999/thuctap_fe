@@ -1,0 +1,48 @@
+<div class="form-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-4">
+                <div class="form-container">
+                    <div class="left-content">
+                        <h3 class="title">Site Name</h3>
+                        <h4 class="sub-title">
+                            <img src="https://cdn.icon-icons.com/icons2/2098/PNG/512/log_in_icon_128822.png" alt=""
+                                class="img">
+                        </h4>
+                    </div>
+                    <div class="right-content">
+                        <h3 class="form-title">LOGIN</h3>
+                        <form class="form-horizontal" (ngSubmit)="onHandleSignin()" [formGroup]="userForm">
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="email" class="form-control" formControlName="email" required>
+                                <span class="text-danger"
+                                    *ngIf="userForm.get('email')?.hasError('required') && (userForm.get('email')?.dirty || isSubmitted)">
+                                    Phải nhập trường email
+                                </span>
+                                <span class="text-danger"
+                                    *ngIf="userForm.get('email')?.hasError('email') && (userForm.get('email')?.dirty || isSubmitted)">
+                                    Email phải đúng định dạng
+                                </span>
+                            </div>
+                            <div class="form-group">
+                                <label>Password</label>
+                                <input type="password" class="form-control" formControlName="password">
+                                <div style="color: red;"> {{ errorMessage }}</div>
+                            </div>
+
+                            <button class="btn signin" type="submit">Login</button>
+                            <div class="remember-me">
+                                <input type="checkbox" class="checkbox">
+                                <span class="check-label">Remember Me</span>
+                            </div>
+                            <a href="" class="forgot">Forgot Password</a>
+                        </form>
+                        <span class="separator">OR</span>
+                        <span class="signup-link">Don't have an account? Sign up <a routerLink="/signup">here</a></span>
+                    </div>
+                </div>
+            </div>      
+        </div>
+    </div>
+</div>

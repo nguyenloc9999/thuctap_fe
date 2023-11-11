@@ -1,0 +1,114 @@
+<section class="bg-sand padding-large">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-6">
+                <a href="#" class="product-image"><img *ngIf="product?.image.url" src="{{product.image?.url}}"></a>
+            </div>
+
+            <div class="col-md-6 pl-5">
+                <div class="product-detail">
+                    <h1 class="section-title" *ngIf="product?.name">{{product.name}}</h1>
+                    <div class="sl ">Tác giả</div>
+                    <p class="fic" *ngIf="product?.author">{{product.author}}</p>
+                    <div class="sl ">Giá </div>
+                    <span class="price" *ngIf="product?.price">{{product.price}}đ</span>
+                    <div class="sl ">Mô Tả</div>
+                    <p class="description" *ngIf="product?.description">
+                        {{product.description}}
+                    </p>
+                    <div class="input-group il">
+                        <p class="sl ">Số lượng: </p>
+                        <div id="updateQuantity"
+                            style="background-color: #f5f5f5;border-radius: 25px;padding: 10px;margin-left: 10px;display: flex; justify-content: space-around;align-items:center ;">
+                            <span class="qua" (click)="decreaseQuantity()" style="margin-left: 10px;">-</span>
+                            <input value="1" type="text" [(ngModel)]="quantity"
+                                style="flex:1;text-align: center;border:none; background-color: #f5f5f5;outline: none;">
+                            <span class="qua" (click)="increaseQuantity()">+</span>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-danger cart" (click)="handleAddToCart()">ADD TO CART</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <hr>
+    <div class="container mt-5">
+        <div class="title">Comment({{countCMT}})</div>
+        <div class="d-flex justify-content row">
+            <div class="col-md-8">
+                <div class="d-flex flex-column comment-section">
+                    <div class="bg-white p-2" *ngFor="let cm of comment">
+                        <div class="d-flex flex-row user-info"><img class="rounded-circle"
+                                src="{{cm.userId?.image.url ?? 'https://via.placeholder.com/300x300?text=No+Image'}}"
+                                width="60" height="60">
+                            <div class="d-flex flex-column justify-content-start ml-2"><span
+                                    class="d-block font-weight-bold name1">{{cm.userId.name}}</span><span
+                                    class="date text-black-50">{{cm.createdAt}}</span></div>
+                            <div>
+                                <button class="btn" (click)="onHandleRemove(cm._id)"><i
+                                        class='bx bxs-message-square-minus bx-flip-vertical'></i></button>
+                            </div>
+                        </div>
+                        <div class="mt-2">
+                            <p class="comment-text">{{cm.description}}</p>
+                        </div>
+
+                    </div>
+                    <div class="bg-light p-2" *ngIf="formData.userId">
+                        <form (ngSubmit)="onHandleAddComment()" [formGroup]="commentForm">
+                            <input type="hidden" formControlName="userId">
+                            <input type="hidden" formControlName="productId">
+                            <div class="d-flex flex-row align-items-start">
+                                <img class="rounded-circle"
+                                    src="https://res.cloudinary.com/diqyzhuc2/image/upload/v1683285518/hoaUi/icon_sacea8-removebg_gkhuzj.png"
+                                    width="40">
+                                <textarea class="form-control ml-1 shadow-none textarea"
+                                    formControlName="description"></textarea>
+                            </div>
+                            <div class="mt-2 text-right">
+                                <button class="btn btn-primary btn-sm shadow-none" type="submit">Post comment</button>
+                                <button class="btn btn-outline-primary btn-sm ml-1 shadow-none"
+                                    type="button">Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="bg-light p-2" *ngIf="!formData.userId">
+                        <p class="tb">Bạn chưa đăng nhập.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="featured-books">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+
+                <div class="section-header align-center">
+                    <h2 class="section-title1">Similar Books</h2>
+                </div>
+                <div class="product-list" data-aos="fade-up">
+                    <div class="row">
+                        <div class="col-md-3" *ngFor="let product of products">
+                            <figure class="product-style">
+                                <img src="{{product?.image.url}}" class="product-item">
+                                <button type="button" class="add-to-cart"
+                                    routerLink="/product/{{product._id}}">Detail</button>
+                                <figcaption>
+                                    <h3><a routerLink="/product/{{product._id}}">{{product.name}}</a>
+                                    </h3>
+                                    <p class="name">Tác giả: {{product.author}}</p>
+                                    <div class="item-price">{{product.price}}đ</div>
+                                </figcaption>
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

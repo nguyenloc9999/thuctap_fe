@@ -1,0 +1,197 @@
+<div class="wrapper">
+    <header>
+        <div class="row">
+            <div class="col-lg-2">
+                <img src="https://blog.flamingtext.com/blog/2023/11/07/flamingtext_com_1699355420_992446154.png" width="45%" 
+                    class="d-inline-block align-text-top logo">
+            </div>
+            <div class="col-lg-6">
+                <form (ngSubmit)="onSearch()">
+                    <div class="form-input">
+                        <input type="search" placeholder="Search..." [(ngModel)]="searchValue" name="searchValue"
+                            (focusout)="onSearchBlur()">
+                        <button type="submit" class="search-btn"><i class='bx bx-search'></i></button>
+                    </div>
+                </form>
+                <div *ngIf="searchResults.length " class="search-results">
+                    <ul class="list-group">
+                        <li class="list-group-item" *ngFor=" let product of searchResults">
+                            <img src="{{product.image.url}}" class="image">
+                            <a routerLink="/product/{{product._id}}">{{product.name}}</a>
+                            <p class="price">{{product.price}}đ</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                
+                <div style="color: red; font-weight: bold;" class="font" matBadge="{{ cartItemCount }}"
+                    [matBadgeHidden]="cartItemCount === 0" mat-raised-button matBadgePosition="after"
+                    matBadgeColor="warn">
+                    <a routerLink="/cart" id="dropdownMenuButton" data-mdb-toggle="dropdown" aria-expanded="false">
+                        <i class='bx bx-cart cart'></i>
+                    </a>
+
+                </div>
+                <div class="p-1 dropdown font" *ngIf="getUserInfo() === null">
+                    <a id="dropdownUserButton" data-mdb-toggle="dropdown" aria-expanded="false"
+                        (click)="openDialog('signin')">
+                        <i class='bx bxs-user user1'></i>
+                    </a>
+                    <ul class="dropdown-menu drop-user p-2" aria-labelledby="dropdownUserButton">
+                        <div class="d-flex flex-column align-items-center">
+                            <p (click)="openDialog('signin')" class="open-modal">Sign in</p>
+                            <p (click)="openDialog('signup')" class="open-modal">Sign up</p>
+                        </div>
+                    </ul>
+                </div>
+
+                <div class="p-1 dropdown w-10 font" *ngIf="getUserInfo() !== null">
+                    <a routerLink="/profile" id="dropdownUserButton" data-mdb-toggle="dropdown" aria-expanded="false">
+                        <img src="{{ getUserInfo().user?.image?.url }}" alt="avatar" class="w-75 avatar" />
+                    </a>
+                    <ul class="dropdown-menu drop-user p-2" aria-labelledby="dropdownUserButton">
+                        <div class="d-flex flex-column align-items-start">
+                            <a (click)="handleLogout()" class="d-flex flex-column">
+                                <span class="fw-semibold"> {{ getUserInfo().user.name }}</span>
+                            </a>
+                            <button class="btn-logout" (click)="handleLogout()">Log out</button>
+                        </div>
+                    </ul>
+                </div>
+
+
+            </div>
+            <hr class="hr-full">
+        </div>
+        <!--  -->
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" routerLink="">HOME</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" routerLink="about">ABOUT US</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#featured-books">BOOKS</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" routerLink="contact">CONTACT US</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" routerLink="blog">BLOG</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <section>
+        <router-outlet />
+    </section>
+    <footer id="footer">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-2" style="margin-left: 94px;">
+
+                    <div class="footer-menu">
+                        <h5>About Us</h5>
+                        <ul class="menu-list">
+                            <li class="menu-item">
+                                <a href="#">vision</a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="#">articles </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="#">careers</a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="#">service terms</a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="#">donate</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+                <div class="col-md-2" style="margin-left: 100px;">
+
+                    <div class="footer-menu">
+                        <h5>Discover</h5>
+                        <ul class="menu-list">
+                            <li class="menu-item">
+                                <a href="#">Home</a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="#">Books</a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="#">Authors</a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="#">Subjects</a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="#">Advanced Search</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+                <div class="col-md-2" style="margin-left: 91px;">
+
+                    <div class="footer-menu">
+                        <h5>My account</h5>
+                        <ul class="menu-list">
+                            <li class="menu-item">
+                                <a href="#">Sign In</a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="#">View Cart</a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="#">My Wishtlist</a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="#">Track My Order</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+                <div class="col-md-2" style="margin-left: 115px;">
+
+                    <div class="footer-menu">
+                        <h5>Help</h5>
+                        <ul class="menu-list">
+                            <li class="menu-item">
+                                <a href="#">Help center</a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="#">Report a problem</a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="#">Suggesting edits</a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="#">Contact us</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </footer>
+</div>

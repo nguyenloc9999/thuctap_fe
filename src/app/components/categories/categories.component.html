@@ -1,0 +1,24 @@
+<section id="popular-books" class="bookshelf">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+
+                <div class="section-header align-center">
+                    <div class="title">
+                        <span>--Categories</span>
+                    </div>
+                    <h2 class="section-title">Explore our Top Categories</h2>
+                </div>
+
+                <ul class="tabs">
+                    <li class="active tab" routerLink="">All Genre</li>
+                    <li *ngFor="let category of categories; index as i" routerLink="/category/{{category._id}}"
+                        class="active tab">{{category.name}}</li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+

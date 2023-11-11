@@ -1,0 +1,53 @@
+<div id="site-header">
+    <div class="container">
+        <h1>Shopping cart</h1>
+    </div>
+</div>
+
+<div class="container" *ngIf="userId">
+    <section id="cart">
+        <article class="product" *ngFor="let product of cart?.data?.products">
+            <header>
+                <a class="remove">
+                    <img src="{{product.image}}" alt="">
+                    <h3 *ngIf="product.productId" (click)="handleRemoveProductInCart(product.productId)">Remove product
+                    </h3>
+                </a>
+            </header>
+            <div class="content">
+                <h1 style="margin-left: 40px;">{{product.name}}</h1>
+                <div title="You have selected this product to be shipped in the color yellow." style="top: 0" class="">
+                </div>
+            </div>
+            <footer class="content">
+                <div class="d-flex w-50 justify-content-around quantity">
+                    <button class="qt-minus" (click)="decreaseQuantity()"> - </button>
+                    <input type="text" value="1" class="qt" min="1" max="100" value={{product?.quantity}}>
+                    <button class="qt-plus" (click)="increaseQuantity()"> +</button>
+                </div>
+                <h2 style="margin-left: 40px;" class="full-price">
+                    {{product.price! * product.quantity!}}đ
+                </h2>
+                <h2 style="margin-left: 40px;" class="price">
+                    {{product.price}}đ
+                </h2>
+            </footer>
+        </article>
+    </section>
+    <section id="site-footer">
+        <div class="container clearfix">
+            <div class="left">
+
+                <h1 class="shipping">Shipping: <span>5.00</span>Đ</h1>
+                <a class="btn btn1" routerLink="/">Tiếp Tục Mua Hàng</a>
+            </div>
+            <div class="right">
+                <h1 class="total">Total: <span>{{cart && cart.data && cart.data.total}}</span>đ</h1>
+                <a class="btn" routerLink="/pay">THANH TOÁN</a>
+            </div>
+        </div>
+    </section>
+</div>
+<div class="bg-light p-2" *ngIf="!userId">
+    <p class="tb">Bạn chưa đăng nhập.</p>
+</div>

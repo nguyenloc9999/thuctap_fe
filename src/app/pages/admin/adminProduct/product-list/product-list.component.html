@@ -1,0 +1,38 @@
+<button class="btn btn-danger"><a routerLink="/admin/products/add" class="btn1">Thêm Mới</a></button>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Tên Sách</th>
+      <th scope="col">Ảnh</th>
+      <th scope="col">Tác Giả</th>
+      <th scope="col">Giá</th>
+      <th scope="col">Mô Tả</th>
+      <th scope="col">Danh Mục</th>
+      <th scope="col">Chức Năng</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of products; index as i">
+      <th scope="row">{{i+1}}</th>
+      <td>{{product.name}}</td>
+      <td>
+        <img [src]="product?.image?.url" alt="" width="70">
+      </td>
+      <td>{{product.author}}</td>
+      <td>{{product.price}}</td>
+      <td>{{product.description}}</td>
+      <td>{{product.category }}</td>
+      <td>
+        <button class="btn btn-danger " (click)="onHandleRemove(product._id)">Xóa</button>
+        <button class="btn btn-primary m-2" routerLink="/admin/products/{{product._id}}/update">Sửa</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div class="paginate">
+  <mat-paginator [length]="formattedPagination.length" [pageSize]="formattedPagination.pageSize"
+    [pageSizeOptions]="formattedPagination.pageSizeOptions" [pageIndex]=" formattedPagination.pageIndex"
+    (page)="onPageChange($event)">
+  </mat-paginator>
+</div>

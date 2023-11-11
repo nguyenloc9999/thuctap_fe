@@ -1,0 +1,62 @@
+<form (ngSubmit)="onHandleUpdate()" [formGroup]="userForm">
+    <!-- Name book input -->
+    <div class="form-outline mb-4">
+      <label class="form-label" for="form4Example1">Username</label>
+      <input type="text" formControlName="name" class="form-control" />
+      <div *ngIf="userForm.controls.name?.errors?.['required'] && userForm.controls.name?.touched  || submitted"
+        class="text-danger">
+        Tên tác giả là bắt buộc
+      </div>
+      <div *ngIf="userForm.controls.name?.errors?.['minlength'] && userForm.controls.name?.touched" class="text-danger">
+        Tên tác giả có ít nhất 4 ký tự
+      </div>
+    </div>
+  
+    <div class="form-outline mb-4">
+      <label class="form-label" for="form4Example1">Email</label>
+      <input type="text" formControlName="email" class="form-control" />
+      <div *ngIf="userForm.controls.email?.errors?.['required'] && userForm.controls.email?.touched  || submitted"
+        class="text-danger">
+        Email là bắt buộc
+      </div>
+      <div *ngIf="userForm.controls.email?.errors?.['email'] && userForm.controls.email?.touched" class="text-danger">
+        Email không đúng định dạng
+      </div>
+  
+    </div>
+    <div class="form-outline mb-4">
+      <label class="form-label" for="form4Example1">Ảnh Đại Diện</label>
+      <input type="text" type="file" id="image" accept="image/*" (change)="onSelectImage($event)" class="form-control"
+        name="images" />
+    </div>
+    <div class="image-preview">
+      <img [src]="user.image.url" alt="Product Image" *ngIf="user?.image?.url" class="mb-4" />
+  
+    </div>
+    <div class="form-outline mb-4">
+      <label class="form-label" for="form4Example1">Địa Chỉ</label>
+      <input type="text" formControlName="address" class="form-control" />
+      <div *ngIf="userForm.controls.address?.errors?.['required'] && userForm.controls.address?.touched  || submitted"
+        class="text-danger">
+        Địa chỉ là bắt buộc
+      </div>
+      <div *ngIf="userForm.controls.address?.errors?.['minlength'] && userForm.controls.address?.touched  || submitted"
+        class="text-danger">
+        Địa chỉ ít nhất 6 ký tự
+      </div>
+    </div>
+  
+    <div class="form-outline mb-4">
+      <label class="form-label" for="form4Example1">Role</label>
+      <div *ngIf="userForm.controls.role?.errors?.['required'] && userForm.controls.role?.touched  || submitted"
+        class="text-danger">
+        Hãy chọn vai trò quản lý
+      </div>
+      <select class="form-control" formControlName="role">
+        <option value="member">Member</option>
+        <option value="admin">Admin</option>
+      </select>
+    </div>
+    <!-- Submit button -->
+    <button type="submit " class="btn btn-primary btn-block mb-4">Cập Nhật</button>
+  </form>

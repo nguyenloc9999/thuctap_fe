@@ -1,0 +1,30 @@
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Tên Khách Hàng</th>
+        
+        <th scope="col">Địa Chỉ</th>
+        <th scope="col">Số ĐT</th>
+        
+        <th scope="col">Trạng Thái</th>
+        <th scope="col">Ngày Đặt Hàng</th>
+        
+        <th scope="col">Chức Năng</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let bill of bills; index as i">
+        <td scope="row">{{i+1}}</td>
+        <td>{{bill.name}}</td>
+        <td>{{bill.address}}</td>
+        <td>{{bill.phone}}</td>
+          <td>{{bill.status?.status}}</td>
+          <td>{{bill.createdAt}}</td>
+        <td>
+          <button class="btn btn-danger " routerLink="/admin/bill/{{bill._id}}">Chi tiết</button>
+        </td>
+      </tr>
+  
+    </tbody>
+  </table>
