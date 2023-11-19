@@ -59,7 +59,7 @@ export class DetailBillComponent {
           icon: 'success',
           title: 'Đơn hàng cập nhật thành công',
           showConfirmButton: false,
-          timer: 1500
+          timer: 1000
         })
         this.router.navigate(["/admin/bill"])  
       }, error => {

@@ -42,7 +42,7 @@ export class BlogEditComponent {
     })
   }
 
-  selectedImage: any = null; // Biến lưu trữ ảnh được chọn
+  selectedImage: any = null; 
 
   onSelectImage(event: any): void {
     if (event.target.files && event.target.files.length > 0) {
@@ -58,7 +58,7 @@ export class BlogEditComponent {
       const newBlog: IBlog = {
         _id: this.blog._id,
         author: this.blogForm.value.author || "",
-        image: this.blog.image, // Sử dụng ảnh cũ mặc định
+        image: this.blog.image, 
         title: this.blogForm.value.title || "",
         description: this.blogForm.value.description || "",
       }
@@ -66,7 +66,7 @@ export class BlogEditComponent {
         const publicId = this.blog.image.publicId;
         console.log(publicId);
 
-        // Tải lên ảnh mới và nhận URL đã tải lên
+        
 
         this.uploadService.updateImage(publicId, this.selectedImage).subscribe(
           (response) => {
@@ -77,50 +77,50 @@ export class BlogEditComponent {
             if (imageUrl) {
               newBlog.image = imageUrl;
 
-              // Gọi productService.updateProduct() để cập nhật thông tin sản phẩm
+              
               this.blogService.updateBlog(newBlog).subscribe(
                 (updateBlog) => {
-                  // Xử lý khi sản phẩm được cập nhật thành công
+                 
                   Swal.fire({
                     position: 'center',
                     icon: 'success',
-                    title: 'Blog has been updated successfully!',
+                    title: 'Cập nhật blog thành công!',
                     showConfirmButton: false,
                     timer: 1500
                   });
                   this.router.navigate(['/admin/blogs']);
                 },
                 (error) => {
-                  // Xử lý khi có lỗi trong quá trình cập nhật sản phẩm
+                 
                   console.log(error.message);
                 }
               );
             } else {
-              // Xử lý khi không có URL mới để cập nhật
+              
               console.log('Không có URL mới để cập nhật');
             }
           },
           (error) => {
-            // Xử lý khi có lỗi trong quá trình upload ảnh
+            
             console.log(error.message);
           }
         );
       } else {
-        // Người dùng không chọn ảnh mới, chỉ cập nhật thông tin sản phẩm
+       
         this.blogService.updateBlog(newBlog).subscribe(
           (updateBlog) => {
-            // Xử lý khi sản phẩm được cập nhật thành công
+            
             Swal.fire({
               position: 'center',
               icon: 'success',
-              title: 'Blog has been updated successfully!',
+              title: 'Cập nhật blog thành công!',
               showConfirmButton: false,
-              timer: 1500
+              timer: 1000
             });
             this.router.navigate(['/admin/blogs']);
           },
           (error) => {
-            // Xử lý khi có lỗi trong quá trình cập nhật sản phẩm
+           
             console.log(error.message);
           }
         );

@@ -64,7 +64,7 @@ export class ProductViewComponent {
       this.formattedPagination.pageSizeOptions = [3, 6]
       this.formattedPagination.totalPages = res.totalPages
       this.formattedPagination.page = res.page
-      console.log(this.products); // Log products data here
+      console.log(this.products);
       console.log(this.formattedPagination.pageSizeOptions);
     })
   }

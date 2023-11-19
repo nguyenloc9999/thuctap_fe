@@ -73,7 +73,7 @@ export class ProductUpdateComponent {
     );
   }
 
-  selectedImage: any = null; // Biến lưu trữ ảnh được chọn
+  selectedImage: any = null; 
 
   onSelectImage(event: any): void {
     if (event.target.files && event.target.files.length > 0) {
@@ -92,7 +92,7 @@ export class ProductUpdateComponent {
         name: this.productForm.value.name || '',
         author: this.productForm.value.author || '',
         price: this.productForm.value.price || 0,
-        image: this.product.image, // Sử dụng ảnh cũ mặc định
+        image: this.product.image,
         description: this.productForm.value.description || '',
         categoryId: this.productForm.value.categoryId || '',
       };
@@ -101,7 +101,7 @@ export class ProductUpdateComponent {
         const publicId = this.product.image.publicId;
         console.log(publicId);
 
-        // Tải lên ảnh mới và nhận URL đã tải lên
+        
 
         this.uploadService.updateImage(publicId, this.selectedImage).subscribe(
           (response) => {
@@ -112,50 +112,50 @@ export class ProductUpdateComponent {
             if (imageUrl) {
               newProduct.image = imageUrl;
 
-              // Gọi productService.updateProduct() để cập nhật thông tin sản phẩm
+              
               this.productService.updateProduct(newProduct).subscribe(
                 (updatedProduct) => {
-                  // Xử lý khi sản phẩm được cập nhật thành công
+                  
                   Swal.fire({
                     position: 'center',
                     icon: 'success',
-                    title: 'Product has been updated successfully!',
+                    title: 'Cập nhật sản phẩm thành công!',
                     showConfirmButton: false,
-                    timer: 1500
+                    timer: 1000
                   });
                   this.router.navigate(['/admin/products']);
                 },
                 (error) => {
-                  // Xử lý khi có lỗi trong quá trình cập nhật sản phẩm
+                  
                   console.log(error.message);
                 }
               );
             } else {
-              // Xử lý khi không có URL mới để cập nhật
+              
               console.log('Không có URL mới để cập nhật');
             }
           },
           (error) => {
-            // Xử lý khi có lỗi trong quá trình upload ảnh
+           
             console.log(error.message);
           }
         );
       } else {
-        // Người dùng không chọn ảnh mới, chỉ cập nhật thông tin sản phẩm
+        
         this.productService.updateProduct(newProduct).subscribe(
           (updatedProduct) => {
-            // Xử lý khi sản phẩm được cập nhật thành công
+            
             Swal.fire({
               position: 'center',
               icon: 'success',
-              title: 'Product has been updated successfully!',
+              title: 'Cập nhật sản phẩm thành công!',
               showConfirmButton: false,
-              timer: 1500
+              timer: 1000
             });
             this.router.navigate(['/admin/products']);
           },
           (error) => {
-            // Xử lý khi có lỗi trong quá trình cập nhật sản phẩm
+            
             console.log(error.message);
           }
         );

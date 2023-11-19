@@ -1,5 +1,5 @@
 <form (ngSubmit)="onHandleAdd()" [formGroup]="blogForm">
-    <!-- Name book input -->
+    
     <div class="form-outline mb-4">
       <label class="form-label" for="form4Example1">Tác giả</label>
       <input type="text" formControlName="author" class="form-control" />
@@ -36,13 +36,13 @@
     <div class="form-outline mb-4">
       <label class="form-label">Ảnh</label>
       <input type="file" class="form-control" name="images" (change)="onSelectImage($event)" />
-      <!-- Hiển thị thông báo lỗi cho trường "Ảnh" -->
+      
       <div *ngIf="blogForm.get('image')?.errors?.['required'] && (blogForm.get('image')?.touched || submitted)"
         class="text-danger">
         Ảnh là bắt buộc
       </div>
     </div>
   
-    <!-- Submit button -->
+    
     <button type="submit" class="btn btn-danger btn-block mb-4">Submit</button>
   </form>

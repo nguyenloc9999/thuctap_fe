@@ -40,36 +40,33 @@ export class ProductAddComponent {
     })
   }
   onSelectImage(event: any) {
-    console.log(event); // Kiểm tra giá trị của event
+    console.log(event); 
 
     if (event.target.files && event.target.files.length > 0) {
-      console.log(event.target.files); // Kiểm tra giá trị của event.target.files
+      console.log(event.target.files); 
 
       const file = event.target.files[0];
       const formData: any = new FormData();
       formData.append('image', file);
-      this.productForm.get('image')?.setValue(formData); // Sử dụng phương thức setValue() của FormControl
+      this.productForm.get('image')?.setValue(formData); 
     }
   }
 
-
-
-  // ...
 
   onHandleAdd() {
     if (this.productForm.valid) {
       const product: IProduct = {
         name: this.productForm.value.name || "",
         author: this.productForm.value.author || "",
-        image: "", // Khởi tạo giá trị rỗng
+        image: "", 
         price: this.productForm.value.price || 0,
         description: this.productForm.value.description || "",
         categoryId: this.productForm.value.categoryId || "",
       };
 
-      const imageFormData: any = this.productForm.value.image; // Lưu trữ FormData vào biến imageFormData
+      const imageFormData: any = this.productForm.value.image; 
 
-      // Upload ảnh và nhận URL đã tải lên
+      
       this.uploadService.AddImage(imageFormData.get('image')).subscribe(
         (response) => {
           const imageUrl = response.urls[0];
@@ -77,28 +74,28 @@ export class ProductAddComponent {
 
           product.image = imageUrl;
 
-          // Gọi productService.addProduct() để thêm sản phẩm vào cơ sở dữ liệu
+         
           this.productService.addProduct(product).subscribe(
             (addedProduct) => {
-              // Xử lý khi sản phẩm được thêm thành công
+              
 
               Swal.fire({
                 position: 'center',
                 icon: 'success',
-                title: 'Product has been added successfully!',
+                title: 'Thêm sản phẩm thành công!',
                 showConfirmButton: false,
-                timer: 1500
+                timer: 1000
               });
               this.router.navigate(['/admin/products']);
             },
             (error) => {
-              // Xử lý khi có lỗi trong quá trình thêm sản phẩm
+              
               console.log(error.message);
             }
           );
         },
         (error) => {
-          // Xử lý khi có lỗi trong quá trình upload ảnh
+         
           console.log(error.message);
         }
       );

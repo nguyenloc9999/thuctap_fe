@@ -33,7 +33,7 @@ export class UserListComponent {
         this.UserService.removeUser(id).subscribe(() => {
           Swal.fire(
             'Deleted!',
-            'Your file has been deleted.',
+            'Xóa người dùng thành công.',
             'success'
           )
           const newUser = this.users.filter((user) => user._id != id);
@@ -42,10 +42,10 @@ export class UserListComponent {
           console.log(error.message);
         })
       } else if (result.dismiss === Swal.DismissReason.cancel) {
-        // Hiển thị thông báo hủy xóa sản phẩm
+        
         Swal.fire(
           'Cancelled',
-          'Your user is safe :)',
+          'Xóa người dùng thất bại',
           'error'
         )
       }

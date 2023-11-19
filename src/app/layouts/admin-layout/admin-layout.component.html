@@ -1,4 +1,3 @@
-<!-- SIDEBAR -->
 
 
 <body>
@@ -67,13 +66,13 @@
                     </li>
             </ul>
     </section>
-    <!-- SIDEBAR -->
+    
 
 
 
-    <!-- CONTENT -->
+   
     <section id="content">
-            <!-- NAVBAR -->
+            
             <nav>
                     <i class='bx bx-menu'></i>
                     <a href="#" class="nav-link"></a>
@@ -93,7 +92,7 @@
                     </a>
                    
             </nav>
-            <!-- NAVBAR -->
+           
             <div *ngIf="searchResults.length " class="search-results">
                     <ul class="list-group">
                             <li class="list-group-item" *ngFor=" let product of searchResults">
@@ -111,14 +110,13 @@
                             </li>
                     </ul>
             </div>
-            <!-- MAIN -->
+            
             <main>
 
                     <router-outlet />
 
             </main>
-            <!-- MAIN -->
+          
     </section>
-    <!-- CONTENT -->
-
+   
 </body>

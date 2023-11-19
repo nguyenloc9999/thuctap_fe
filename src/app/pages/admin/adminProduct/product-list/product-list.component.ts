@@ -47,7 +47,7 @@ export class ProductListComponent {
       this.categoryService.getCategories().subscribe(
         (categoriesData: any) => {
           this.categories = categoriesData;
-          // Gọi hàm mapCategoryToProducts() sau khi nhận được dữ liệu danh mục
+         
           this.mapCategoryToProducts();
         },
         (error) => {
@@ -61,9 +61,9 @@ export class ProductListComponent {
 
   pageIndex: any
   onPageChange(event: any): void {
-    this.pageIndex = event.pageIndex // Lấy chỉ mục trang mới
-    this.limit = event.pageSize // Lấy kích thước trang
-    this.getProduct(this.pageIndex + 1) // Lấy dữ liệu cho trang mới
+    this.pageIndex = event.pageIndex 
+    this.limit = event.pageSize 
+    this.getProduct(this.pageIndex + 1) 
   }
   getProduct(page: number): void {
     this.productService.getAllProducts(this.limit, page).subscribe((res: any) => {
@@ -98,20 +98,20 @@ export class ProductListComponent {
       cancelButtonText: 'Cancel'
     }).then((result) => {
       if (result.isConfirmed) {
-        // Xóa sản phẩm
+       
         this.productService.removeProduct(id).subscribe(() => {
           Swal.fire(
             'Deleted!',
-            'Your file has been deleted.',
+            'Xóa sản phẩm thành công',
             'success'
           )
           this.products = this.products.filter(item => item._id !== id);
         })
       } else if (result.dismiss === Swal.DismissReason.cancel) {
-        // Hiển thị thông báo hủy xóa sản phẩm
+        
         Swal.fire(
           'Cancelled',
-          'Your product is safe :)',
+          'Xóa sản phẩm thất bại',
           'error'
         )
       }

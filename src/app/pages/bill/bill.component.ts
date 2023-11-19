@@ -30,7 +30,7 @@ export class BillComponent implements OnInit {
   }
 
   huyDon(orderId: string, status: string): void {
-    const updatedStatus = '6488a33d098b67f90d85df7a'; // Trạng thái mới là 'cancel'
+    const updatedStatus = '6488a33d098b67f90d85df7a'; 
 
     Swal.fire({
       title: 'Hủy đơn hàng',

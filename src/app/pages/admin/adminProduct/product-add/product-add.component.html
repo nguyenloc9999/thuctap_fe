@@ -1,9 +1,9 @@
 <form (ngSubmit)="onHandleAdd()" [formGroup]="productForm">
-    <!-- Name book input -->
+    
     <div class="form-outline mb-4">
       <label class="form-label">Tên sách</label>
       <input type="text" class="form-control" formControlName="name" />
-      <!-- Hiển thị thông báo lỗi cho trường "Tên sách" -->
+      
       <div *ngIf="productForm.controls.name?.errors?.['required'] && productForm.controls.name?.touched  || submitted"
         class="text-danger">
         Tên sách là bắt buộc
@@ -19,11 +19,11 @@
   
     </div>
   
-    <!-- Name User input -->
+    
     <div class="form-outline mb-4">
       <label class="form-label">User Name</label>
       <input type="text" class="form-control" formControlName="author" />
-      <!-- Hiển thị thông báo lỗi cho trường "User Name" -->
+      
       <div *ngIf="productForm.controls.author?.errors?.['required'] && productForm.controls.author?.touched  || submitted"
         class="text-danger">
         User Name là bắt buộc
@@ -32,16 +32,14 @@
         class="text-danger">
         User Name phải có ít nhất 4 ký tự
       </div>
-      <!-- <div *ngIf="productForm.controls.author?.errors?.['pattern'] && productForm.controls.author?.touched" class="text-danger">
-        Tên sách không được chứa số
-      </div> -->
+      
     </div>
   
-    <!-- Price input -->
+    
     <div class="form-outline mb-4">
       <label class="form-label">Giá</label>
       <input type="number" class="form-control" formControlName="price" />
-      <!-- Hiển thị thông báo lỗi cho trường "Price" -->
+      
       <div *ngIf="productForm.controls.price?.errors?.['required'] && productForm.controls.price?.touched || submitted"
         class="text-danger">
         Giá là bắt buộc
@@ -52,22 +50,22 @@
   
     </div>
   
-    <!-- Image input -->
+    
     <div class="form-outline mb-4">
       <label class="form-label">Ảnh</label>
       <input type="file" class="form-control" name="images" (change)="onSelectImage($event)" />
-      <!-- Hiển thị thông báo lỗi cho trường "Ảnh" -->
+      
       <div *ngIf="productForm.get('image')?.errors?.['required'] && (productForm.get('image')?.touched || submitted)"
         class="text-danger">
         Ảnh là bắt buộc
       </div>
     </div>
   
-    <!-- Message input -->
+    
     <div class="form-outline mb-4">
       <label class="form-label">Mô tả</label>
       <textarea class="form-control" rows="4" formControlName="description"></textarea>
-      <!-- Hiển thị thông báo lỗi cho trường "Mô tả" -->
+      
       <div
         *ngIf="productForm.controls.description?.errors?.['required'] && productForm.controls.description?.touched  || submitted"
         class="text-danger">
@@ -88,7 +86,7 @@
       class="text-danger">
       Hãy chọn danh mục muốn thêm
     </div><br>
-    <!-- Submit button -->
+    
     <button type="submit" class="btn btn-primary btn-block mb-4">Submit</button>
   
   </form>

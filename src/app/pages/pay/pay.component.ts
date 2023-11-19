@@ -84,7 +84,7 @@ export class PayComponent {
             icon: 'success',
             title: 'Đã thêm đơn hàng thành công!',
             showConfirmButton: false,
-            timer: 1500
+            timer: 1000
           });
           this.router.navigate(['/']);
         },

@@ -72,11 +72,11 @@ export class ProductDetailPageComponent {
       this.products = products.docs.filter((product: IProduct) => product.categoryId === this.product.categoryId);
     })
   }
-  // ----------------------------
+  
   scrollToTop() {
     this.elementRef.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
-  // -------------------------------
+  
   decreaseQuantity() {
     if (this.quantity > 1) {
       this.quantity--;
@@ -85,7 +85,7 @@ export class ProductDetailPageComponent {
   increaseQuantity() {
     this.quantity++;
   }
-  //--------------------------------
+  
 
   onHandleAddComment() {
     if (this.commentForm.valid) {
@@ -105,18 +105,18 @@ export class ProductDetailPageComponent {
   }
 
   onHandleRemove(id: string | any) {
-    // Thực hiện xoá bình luận
+   
     this.CommentService.removeComment(id).subscribe(comment => {
       const newComment = this.comment.filter((cm) => cm._id != id);
       this.comment = newComment;
     });
   }
-  // ---------------------------------
+  
 
 
   handleAddToCart() {
     if (!this.userCart.user) {
-      // Hiển thị thông báo hoặc chuyển hướng đến trang đăng nhập
+      
       console.log("Bạn chưa đăng nhập. Vui lòng đăng nhập để thêm sản phẩm vào giỏ hàng.");
       this.router.navigate(['/signin']);
       return;
@@ -137,7 +137,7 @@ export class ProductDetailPageComponent {
         icon: 'success',
         title: 'Đã thêm sản phẩm vào giỏ hàng!',
         showConfirmButton: false,
-        timer: 1500
+        timer: 1000
       })
     })
 

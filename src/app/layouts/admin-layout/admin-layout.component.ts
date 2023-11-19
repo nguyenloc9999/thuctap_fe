@@ -37,7 +37,7 @@ export class AdminLayoutComponent implements AfterViewInit {
       sidebar?.classList.toggle('hide');
     });
 
-    // 
+   
     const searchButton = document.querySelector('#content nav form .form-input button');
     const searchButtonIcon = document.querySelector('#content nav form .form-input button .bx');
     const searchForm = document.querySelector('#content nav form');
@@ -53,7 +53,7 @@ export class AdminLayoutComponent implements AfterViewInit {
         }
       }
     })
-    // 
+    
     if (window.innerWidth < 768) {
       sidebar?.classList.add('hide');
     } else if (window.innerWidth > 576) {
@@ -66,7 +66,7 @@ export class AdminLayoutComponent implements AfterViewInit {
         searchForm?.classList.remove('show');
       }
     })
-    // 
+  
 
   }
 
@@ -108,27 +108,27 @@ export class AdminLayoutComponent implements AfterViewInit {
       cancelButtonText: 'Cancel'
     }).then((result) => {
       if (result.isConfirmed) {
-        // Xóa sản phẩm
+        
         this.productService.removeProduct(id).subscribe(() => {
           Swal.fire(
             'Deleted!',
-            'Your file has been deleted.',
+            'Xóa thành công.',
             'success'
           )
-          // Cập nhật lại danh sách sản phẩm
+         
           this.getProducts();
 
-          // Cập nhật lại kết quả tìm kiếm
+         
           if (this.searchValue.trim()) {
             this.onSearch();
           }
           this.products = this.products.filter(item => item._id !== id);
         })
       } else if (result.dismiss === Swal.DismissReason.cancel) {
-        // Hiển thị thông báo hủy xóa sản phẩm
+        
         Swal.fire(
           'Cancelled',
-          'Your product is safe :)',
+          'Xóa thất bại',
           'error'
         )
       }

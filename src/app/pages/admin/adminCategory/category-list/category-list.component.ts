@@ -32,11 +32,11 @@ export class CategoryListComponent {
       confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
       if (result.isConfirmed) {
-        // Xóa danh mục
+        
         this.CategoryService.removeCategory(id).subscribe(() => {
           Swal.fire(
             'Deleted!',
-            'Your file has been deleted.',
+            'Xóa danh mục thành công.',
             'success'
           )
           const newCategory = this.categories.filter((category) => category._id != id);
@@ -45,10 +45,10 @@ export class CategoryListComponent {
           console.log(error.message);
         })
       } else if (result.dismiss === Swal.DismissReason.cancel) {
-        // Hiển thị thông báo hủy xóa sản phẩm
+        
         Swal.fire(
           'Cancelled',
-          'Your product is safe :)',
+          'Xóa danh mục thất bại',
           'error'
         )
       }

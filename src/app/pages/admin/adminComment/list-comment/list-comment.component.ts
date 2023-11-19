@@ -39,20 +39,20 @@ export class ListCommentComponent {
         cancelButtonText: 'Cancel'
       }).then((result) => {
         if (result.isConfirmed) {
-          // Xóa sản phẩm
+         
           this.commentService.removeComment(id).subscribe(() => {
             Swal.fire(
               'Deleted!',
-              'Your file has been deleted.',
+              'Xóa bình luận thành công.',
               'success'
             )
             this.comments = this.comments.filter(item => item._id !== id);
           })
         } else if (result.dismiss === Swal.DismissReason.cancel) {
-          // Hiển thị thông báo hủy xóa sản phẩm
+          
           Swal.fire(
             'Cancelled',
-            'Your product is safe :)',
+            'Xóa bình luận thất bại',
             'error'
           )
         }

@@ -2,7 +2,7 @@
     <div class="form-outline mb-4">
       <label class="form-label">Tên sách</label>
       <input type="text" class="form-control" formControlName="name" />
-      <!-- Hiển thị thông báo lỗi cho trường "Tên sách" -->
+      
       <div *ngIf="productForm.get('name')?.errors?.['required'] && (productForm.get('name')?.touched || submitted)"
         class="text-danger">
         Tên sách là bắt buộc
@@ -17,11 +17,11 @@
       </div>
     </div>
   
-    <!-- Author input -->
+    
     <div class="form-outline mb-4">
       <label class="form-label">Tác giả</label>
       <input type="text" class="form-control" formControlName="author" />
-      <!-- Hiển thị thông báo lỗi cho trường "Tác giả" -->
+      
       <div *ngIf="productForm.get('author')?.errors?.['required'] && (productForm.get('author')?.touched || submitted)"
         class="text-danger">
         Tác giả là bắt buộc
@@ -32,11 +32,11 @@
       </div>
     </div>
   
-    <!-- Price input -->
+    
     <div class="form-outline mb-4">
       <label class="form-label">Giá</label>
       <input type="number" class="form-control" formControlName="price" />
-      <!-- Hiển thị thông báo lỗi cho trường "Giá" -->
+      
       <div *ngIf="productForm.get('price')?.errors?.['required'] && (productForm.get('price')?.touched || submitted)"
         class="text-danger">
         Giá là bắt buộc
@@ -55,11 +55,11 @@
       <img [src]="product.image.url" alt="Product Image" *ngIf="product?.image.url" class="mb-4" />
   
     </div>
-    <!-- Message input -->
+    
     <div class="form-outline mb-4">
       <label class="form-label">Mô tả</label>
       <textarea class="form-control" rows="4" formControlName="description"></textarea>
-      <!-- Hiển thị thông báo lỗi cho trường "Mô tả" -->
+      
       <div
         *ngIf="productForm.get('description')?.errors?.['required'] && (productForm.get('description')?.touched || submitted)"
         class="text-danger">
@@ -85,6 +85,6 @@
       </div>
     </div>
   
-    <!-- Submit button -->
+   
     <button type="submit" class="btn btn-primary btn-block mb-4" [disabled]="productForm.invalid">Cập nhật</button>
   </form>

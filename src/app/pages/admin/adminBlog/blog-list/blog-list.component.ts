@@ -32,11 +32,11 @@ export class BlogListComponent {
         confirmButtonText: 'Yes, delete it!'
       }).then((result) => {
         if (result.isConfirmed) {
-          // Xóa danh mục
+          
           this.BlogService.removeBlog(id).subscribe(() => {
             Swal.fire(
               'Deleted!',
-              'Your file has been deleted.',
+              'Xóa blog thành công.',
               'success'
             )
             const newBlog = this.blogs.filter((blog) => blog._id != id);
@@ -45,10 +45,10 @@ export class BlogListComponent {
             console.log(error.message);
           })
         } else if (result.dismiss === Swal.DismissReason.cancel) {
-          // Hiển thị thông báo hủy xóa sản phẩm
+          
           Swal.fire(
             'Cancelled',
-            'Your product is safe :)',
+            'Xóa blog thất bại',
             'error'
           )
         }

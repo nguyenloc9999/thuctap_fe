@@ -12,43 +12,43 @@ import { CartService } from 'src/app/services/cart/cart.service';
   styleUrls: ['./base-layout.component.css']
 })
 export class BaseLayoutComponent {
-  cart !: Icart
-  productsInCart: IProduct[] = []
+  cart!: Icart;
+  productsInCart: IProduct[] = [];
   cartItemCount: number = 0;
   searchValue = '';
   products: IProduct[] = [];
   @Input() searchResults: IProduct[] = [];
   showLogoutDropdown: boolean = false;
-
+  isAdmin: boolean = false; 
 
   constructor(
     private productService: ProductService,
     private router: Router,
     private CartService: CartService,
     private dialog: MatDialog,
-
   ) { }
   
-  userId = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')!).user?._id : ''
-
+  userId = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')!).user?._id : '';
 
   openDialog(type: 'signin' | 'signup') {
     if (type === 'signup') {
-      this.router.navigate(['/signup'])
+      this.router.navigate(['/signup']);
     }
     if (type === 'signin') {
-      this.router.navigate(['/signin'])
+      this.router.navigate(['/signin']);
     }
   }
-  // 
+
   getUserInfo() {
-    const userInfo = JSON.parse(localStorage.getItem('user')!)
-    return userInfo
+    const userInfo = JSON.parse(localStorage.getItem('user')!);
+    return userInfo;
   }
+
   handleLogout() {
     const logout = localStorage.removeItem('user');
-    return logout
+    return logout;
   }
+
   getProducts() {
     this.productService.getProducts().subscribe((data: any) => {
       this.products = data.docs;
@@ -58,15 +58,19 @@ export class BaseLayoutComponent {
   ngOnInit() {
     this.getProducts();
     if (this.userId === '') return;
+
+    const userInfo = this.getUserInfo();
+    this.isAdmin = userInfo && userInfo.user && userInfo.user.role === 'admin';
+
     this.CartService.getCart(this.userId).subscribe(cart => {
       this.cart = cart;
       if (this.cart && this.cart.data) {
         this.productsInCart = this.cart.data.products;
-        this.cartItemCount = this.productsInCart?.length ??0; // Thêm dòng này để cập nhật cartItemCount
+        this.cartItemCount = this.productsInCart?.length ?? 0;
       }
     });
-    const token = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')!).accessToken : '';
   }
+
   onSearch() {
     if (!this.searchValue.trim()) {
       this.searchResults = [];
@@ -74,13 +78,17 @@ export class BaseLayoutComponent {
     }
     this.productService.searchProducts(this.searchValue).subscribe((data: any) => {
       this.searchResults = data.docs;
-      console.log(this.searchResults);
-
     });
   }
+
   onSearchBlur() {
     if (!this.searchValue.trim()) {
       this.searchResults = [];
     }
+  }
+
+  
+  goToAdminPage() {
+    this.router.navigate(['/admin']);
   }
 }

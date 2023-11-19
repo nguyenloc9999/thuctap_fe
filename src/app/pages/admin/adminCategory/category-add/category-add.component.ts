@@ -28,9 +28,9 @@ export class CategoryAddComponent {
         Swal.fire({
           position: 'center',
           icon: 'success',
-          title: 'Category has been added successfully!',
+          title: 'Thêm danh mục thành công!',
           showConfirmButton: false,
-          timer: 1500
+          timer: 1000
         })
         this.router.navigate(['/admin/categories'])
       }, error => {

@@ -40,8 +40,8 @@
                     </a>
                     <ul class="dropdown-menu drop-user p-2" aria-labelledby="dropdownUserButton">
                         <div class="d-flex flex-column align-items-center">
-                            <p (click)="openDialog('signin')" class="open-modal">Sign in</p>
-                            <p (click)="openDialog('signup')" class="open-modal">Sign up</p>
+                            <p (click)="openDialog('signin')" class="open-modal">Đăng nhập</p>
+                            <p (click)="openDialog('signup')" class="open-modal" style="margin-left: -20px;">Đăng kí</p>
                         </div>
                     </ul>
                 </div>
@@ -53,18 +53,21 @@
                     <ul class="dropdown-menu drop-user p-2" aria-labelledby="dropdownUserButton">
                         <div class="d-flex flex-column align-items-start">
                             <a (click)="handleLogout()" class="d-flex flex-column">
-                                <span class="fw-semibold"> {{ getUserInfo().user.name }}</span>
+                                <span class="fw-semibold">{{ getUserInfo().user.name }}</span>
                             </a>
-                            <button class="btn-logout" (click)="handleLogout()">Log out</button>
+                            <button *ngIf="isAdmin" class="btn-admin" (click)="goToAdminPage()">Trang quản trị</button>
+                            <button class="btn-logout" (click)="handleLogout()">Đăng xuất</button>
+                            
                         </div>
                     </ul>
                 </div>
+                
 
 
             </div>
             <hr class="hr-full">
         </div>
-        <!--  -->
+        
         <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"

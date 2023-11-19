@@ -26,15 +26,15 @@ export class SignUpComponent {
   ) { }
 
   onSelectImage(event: any) {
-    console.log(event); // Kiểm tra giá trị của event
+    console.log(event); 
 
     if (event.target.files && event.target.files.length > 0) {
-      console.log(event.target.files); // Kiểm tra giá trị của event.target.files
+      console.log(event.target.files); 
 
       const file = event.target.files[0];
       const formData: any = new FormData();
       formData.append('image', file);
-      this.userForm.get('image')?.setValue(formData); // Sử dụng phương thức setValue() của FormControl
+      this.userForm.get('image')?.setValue(formData); 
     }
   }
 
@@ -74,18 +74,17 @@ export class SignUpComponent {
         image: "",
 
       }
-      const imageFormData: any = this.userForm.value.image; // Lưu trữ FormData vào biến imageFormData
+      const imageFormData: any = this.userForm.value.image; 
       this.uploadService.AddImage(imageFormData.get('image')).subscribe(
         (response) => {
           const imageUrl = response.urls[0];
 
           user.image = imageUrl;
 
-          // Gọi productService.addProduct() để thêm sản phẩm vào cơ sở dữ liệu
+          
           this.userService.signUp(user).subscribe(
             (user) => {
-              // Xử lý khi sản phẩm được thêm thành công
-
+              
               Swal.fire({
                 position: 'center',
                 icon: 'success',
@@ -96,13 +95,13 @@ export class SignUpComponent {
               this.router.navigate(['/signin']);
             },
             (error) => {
-              // Xử lý khi có lỗi trong quá trình thêm sản phẩm
+              
               console.log(error.message);
             }
           );
         },
         (error) => {
-          // Xử lý khi có lỗi trong quá trình upload ảnh
+          
           console.log(error.message);
         }
       );

@@ -29,7 +29,7 @@ export class UserUpdateComponent {
     address: ['', [Validators.required, Validators.minLength(6)]],
     role: [''],
     image: ['']
-    // password: ['', [Validators.required, Validators.minLength(6)]]
+    
   })
 
   constructor(private userService: UserService,
@@ -53,7 +53,7 @@ export class UserUpdateComponent {
       )
     })
   }
-  selectedImage: any = null; // Biến lưu trữ ảnh được chọn
+  selectedImage: any = null; 
   onSelectImage(event: any): void {
     if (event.target.files && event.target.files.length > 0) {
       this.selectedImage = event.target.files[0];
@@ -77,7 +77,7 @@ export class UserUpdateComponent {
         const publicId = this.user.image.publicId;
         console.log(publicId);
 
-        // Tải lên ảnh mới và nhận URL đã tải lên
+       
 
         this.uploadService.updateImage(publicId, this.selectedImage).subscribe(
           (response) => {
@@ -88,50 +88,50 @@ export class UserUpdateComponent {
             if (imageUrl) {
               newUser.image = imageUrl;
 
-              // Gọi productService.updateProduct() để cập nhật thông tin sản phẩm
+             
               this.userService.updateUser(newUser).subscribe(
                 (userUpdate) => {
-                  // Xử lý khi sản phẩm được cập nhật thành công
+                  
                   Swal.fire({
                     position: 'center',
                     icon: 'success',
-                    title: 'User has been updated successfully!',
+                    title: 'Cập nhật người dùng thành công!',
                     showConfirmButton: false,
-                    timer: 1500
+                    timer: 1000
                   });
                   this.router.navigate(['/admin/user']);
                 },
                 (error) => {
-                  // Xử lý khi có lỗi trong quá trình cập nhật sản phẩm
+                  
                   console.log(error.message);
                 }
               );
             } else {
-              // Xử lý khi không có URL mới để cập nhật
+              
               console.log('Không có URL mới để cập nhật');
             }
           },
           (error) => {
-            // Xử lý khi có lỗi trong quá trình upload ảnh
+            
             console.log(error.message);
           }
         );
       } else {
-        // Người dùng không chọn ảnh mới, chỉ cập nhật thông tin sản phẩm
+        
         this.userService.updateUser(newUser).subscribe(
           (userUpdate) => {
-            // Xử lý khi sản phẩm được cập nhật thành công
+            
             Swal.fire({
               position: 'center',
               icon: 'success',
-              title: 'User has been updated successfully!',
+              title: 'Cập nhật người dùng thành công!',
               showConfirmButton: false,
-              timer: 1500
+              timer: 1000
             });
             this.router.navigate(['/admin/user']);
           },
           (error) => {
-            // Xử lý khi có lỗi trong quá trình cập nhật sản phẩm
+            
             console.log(error.message);
           }
         );
